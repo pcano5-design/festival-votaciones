@@ -57,7 +57,7 @@ festival-votaciones/
 
 1. **Clonar el repositorio**
    ```
-   git clone <URL-DEL-REPOSITORIO>
+   git clone https://github.com/pcano5-design/festival-votaciones.git
    cd festival-votaciones
    ```
 
