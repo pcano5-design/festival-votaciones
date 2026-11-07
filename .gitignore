@@ -1,0 +1,15 @@
+# Entorno virtual (cada persona lo crea con requirements.txt)
+.venv/
+
+# Secretos: contraseñas y claves (NUNCA se suben)
+.env
+
+# Archivos temporales que Python genera solo
+__pycache__/
+*.pyc
+
+# Base de datos SQLite (no se usa: el proyecto usa MySQL)
+db.sqlite3
+
+# Configuración personal del editor
+.vscode/

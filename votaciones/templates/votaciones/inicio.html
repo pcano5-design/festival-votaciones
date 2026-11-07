@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Inicio · Festival Vallenato{% endblock %}
+
+{% block contenido %}
+<h1 class="h3 mb-3">Ediciones del Festival de la Leyenda Vallenata</h1>
+
+{% if ediciones %}
+    <div class="list-group">
+    {% for edicion in ediciones %}
+        <div class="list-group-item">
+            <h2 class="h5 mb-1">
+                <a href="{% url 'votaciones:detalle_edicion' edicion.anio %}">{{ edicion.nombre }} ({{ edicion.anio }})</a>
+            </h2>
+            <p class="mb-1 text-muted">Del {{ edicion.fecha_inicio }} al {{ edicion.fecha_fin }}</p>
+            {% if edicion.activa %}<span class="badge bg-success">Activa</span>{% endif %}
+        </div>
+    {% endfor %}
+    </div>
+{% else %}
+    <p>Todavía no hay ediciones registradas.</p>
+{% endif %}
+{% endblock %}

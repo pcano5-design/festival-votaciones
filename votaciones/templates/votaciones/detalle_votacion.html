@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ votacion.titulo }}{% endblock %}
+
+{% block contenido %}
+<a href="{% url 'votaciones:detalle_edicion' votacion.categoria.edicion.anio %}">&larr; Volver a la edición</a>
+
+<h1 class="h3 mt-2">{{ votacion.titulo }}</h1>
+<p class="text-muted mb-1">
+    {{ votacion.categoria.nombre }} · {{ votacion.categoria.edicion.nombre }}
+</p>
+<p>
+    <span class="badge {% if votacion.estado == 'abierta' %}bg-success{% else %}bg-secondary{% endif %}">{{ votacion.get_estado_display }}</span>
+    Del {{ votacion.fecha_apertura }} al {{ votacion.fecha_cierre }}
+</p>
+{% if votacion.descripcion %}<p>{{ votacion.descripcion }}</p>{% endif %}
+
+<h2 class="h5 mt-4">Opciones</h2>
+<ol class="list-group list-group-numbered">
+{% for opcion in opciones %}
+    <li class="list-group-item">
+        <strong>{{ opcion.nombre }}</strong>
+        {% if opcion.descripcion %}<br><small class="text-muted">{{ opcion.descripcion }}</small>{% endif %}
+    </li>
+{% empty %}
+    <li class="list-group-item">Esta votación aún no tiene opciones.</li>
+{% endfor %}
+</ol>
+
+<div class="alert alert-info mt-4">
+    El registro de votos estará disponible en la siguiente entrega.
+</div>
+{% endblock %}
